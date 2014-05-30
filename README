@@ -10,7 +10,7 @@ path of this AOSP repo workspace.
 
 Below is the list of specific commits for each input directory used:
 
-external/gtest       142396e Build gtest with NDK 9 for all architectures.
-external/qemu        90eb445 package-release.sh: Refine --copy-prebuilts
-sdk/emulator/opengl  88a8c6a emulator/opengl: Fix GCC 4.8 warnings.
+external/gtest       e8981d1 Add LOCAL_MULTILIB := both for host targets.
+external/qemu        a7f4b19 vl-android.c: Support EXT4 cache partitions.
+sdk/emulator/opengl  1af0da2 Merge "emulator/opengl: Prepare for 64-bit build changes." into idea133 automerge: 343a78f
 
