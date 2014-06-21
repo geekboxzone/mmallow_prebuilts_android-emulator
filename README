@@ -11,6 +11,6 @@ path of this AOSP repo workspace.
 Below is the list of specific commits for each input directory used:
 
 external/gtest       e8981d1 Add LOCAL_MULTILIB := both for host targets.
-external/qemu        b72ae03 Fix: create missing partition images on demand.
+external/qemu        9cab753 Fix YAFFS2 support auto-detection logic.
 sdk/emulator/opengl  1af0da2 Merge "emulator/opengl: Prepare for 64-bit build changes." into idea133 automerge: 343a78f
 
