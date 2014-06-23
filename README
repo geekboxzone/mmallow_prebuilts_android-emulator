@@ -11,6 +11,6 @@ path of this AOSP repo workspace.
 Below is the list of specific commits for each input directory used:
 
 external/gtest       e8981d1 Add LOCAL_MULTILIB := both for host targets.
-external/qemu        fb8aca0 Fix emulation of old platform images.
+external/qemu        965a6e0 Parse fstab.goldfish file from ramdisk.img
 sdk/emulator/opengl  1af0da2 Merge "emulator/opengl: Prepare for 64-bit build changes." into idea133 automerge: 343a78f
 
