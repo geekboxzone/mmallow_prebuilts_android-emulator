@@ -10,15 +10,25 @@ path of this AOSP repo workspace.
 
 Below is the list of specific commits for each input directory used:
 
-external/qemu        b1880f4 distrib/package-release.sh: Better change reports + arm64 launcher.
+external/qemu        6e092c5 emulator-qemu: Create empty cache partition image on demand.
 sdk/emulator/opengl  d430650 emulator/opengl: Prepare for 64-bit build changes.
 external/gtest       e8981d1 Add LOCAL_MULTILIB := both for host targets.
 
 Summary of changes:
 
-    $ cd external/qemu && git log --oneline --no-merges 29c07c7..b1880f4
-        b1880f4 distrib/package-release.sh: Better change reports + arm64 launcher.
+    $ cd external/qemu && git log --oneline --no-merges b1880f4..6e092c5
+        6e092c5 emulator-qemu: Create empty cache partition image on demand.
+        a302234 android/kernel/: Disable debug traces.
+        898b02e emulator-qemu: Fix data directory lookup.
+        283be61 android-configure.sh: Add --qemu-prebuilts-dir=<path> option.
+        c6fd36f android/avd/util.c: Translate arm64-v8a ABI to arm64 CPU architecture.
+        281b9af android/kernel/kernel_utils.c: Support probing version for ARM64 kernel images.
+        c2faedc Add kernel version detection to emulator
+        bc959d3 disabled ccache for OSX debug builds
+        f745296 _WIN32 and_WIN64 are defined automatically by MinGW 4.8.3
+        56fb206 Enable building Win64 binaries and running unit tests
+        1301da6 Use our prebuilt Mingw64 toolchain to build Win32 binaries.
+        027adff enable ssse3 for 64-bit emulator
 
-    $ cd sdk/emulator/opengl && git log --oneline --no-merges 1af0da2..d430650
-
+    # No changes to sdk/emulator/opengl
     # No changes to external/gtest
