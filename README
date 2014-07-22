@@ -10,7 +10,15 @@ path of this AOSP repo workspace.
 
 Below is the list of specific commits for each input directory used:
 
+external/qemu        b1880f4 distrib/package-release.sh: Better change reports + arm64 launcher.
+sdk/emulator/opengl  d430650 emulator/opengl: Prepare for 64-bit build changes.
 external/gtest       e8981d1 Add LOCAL_MULTILIB := both for host targets.
-external/qemu        29c07c7 android/filesystems: Fix a bug in ramdisk_extractor.cpp
-sdk/emulator/opengl  1af0da2 Merge "emulator/opengl: Prepare for 64-bit build changes." into idea133 automerge: 343a78f
 
+Summary of changes:
+
+    $ cd external/qemu && git log --oneline --no-merges 29c07c7..b1880f4
+        b1880f4 distrib/package-release.sh: Better change reports + arm64 launcher.
+
+    $ cd sdk/emulator/opengl && git log --oneline --no-merges 1af0da2..d430650
+
+    # No changes to external/gtest
