@@ -10,25 +10,39 @@ path of this AOSP repo workspace.
 
 Below is the list of specific commits for each input directory used:
 
-external/qemu        6e092c5 emulator-qemu: Create empty cache partition image on demand.
-sdk/emulator/opengl  d430650 emulator/opengl: Prepare for 64-bit build changes.
+external/qemu        a78901e package-release.sh: Fix script for idea133 branch.
+sdk/emulator/opengl  d50eea1 emulator/opengl: Remove out-of-process handling code.
 external/gtest       e8981d1 Add LOCAL_MULTILIB := both for host targets.
 
 Summary of changes:
 
-    $ cd external/qemu && git log --oneline --no-merges b1880f4..6e092c5
-        6e092c5 emulator-qemu: Create empty cache partition image on demand.
-        a302234 android/kernel/: Disable debug traces.
-        898b02e emulator-qemu: Fix data directory lookup.
-        283be61 android-configure.sh: Add --qemu-prebuilts-dir=<path> option.
-        c6fd36f android/avd/util.c: Translate arm64-v8a ABI to arm64 CPU architecture.
-        281b9af android/kernel/kernel_utils.c: Support probing version for ARM64 kernel images.
-        c2faedc Add kernel version detection to emulator
-        bc959d3 disabled ccache for OSX debug builds
-        f745296 _WIN32 and_WIN64 are defined automatically by MinGW 4.8.3
-        56fb206 Enable building Win64 binaries and running unit tests
-        1301da6 Use our prebuilt Mingw64 toolchain to build Win32 binaries.
-        027adff enable ssse3 for 64-bit emulator
+    $ cd external/qemu && git log --oneline --no-merges 6e092c5..a78901e .
+        a78901e package-release.sh: Fix script for idea133 branch.
+        63db7c2 enabled -Werror=implicit-function-declaration, fixed errors
+        6e0c73c improved debug output for adb message traffic
+        0219059 Do not force QEMU include paths for all modules.
+        9dfeac6 package-release.sh: Only list commit history for current directory.
+        e9fa4d3 Automatically upgrade cache.img to the right partition format.
+        b0ec9cc distrib/build-kernel.sh: Misc fixes.
+        b51262d Fixed bug in ffs().
+        c0e4766 shutdown socket gracefully with SocketDrainer
+        44ead41 RAMList: Upstream dirty tracking implementation.
+        206910b exec/ram_addr.h: New header to match upstream.
+        8608806 Switch hwaddr to 64-bits to match upstream.
+        6a66b61 include/hw/sd.h: Move definitions to hw/android/goldfish/mmc.c
+        aeccf4a Remove obsolete Floppy Disk, USB, BT and PCMCIA headers.
+        3dcb65d Rename QEMUConsole to QemuConsole
+        5deb7f7 Move Visitor typedef to <qemu/typedefs.h>
+        98c2314 mini-glib: Add TRUE and FALSE definitions.
+        a9be778 [MIPS64] target-mips : implement unaligned loads using TCG
+        092b978 [MIPS] Refactor page table walk
+        721271d replace refset with std::set and fix crashes
+        3eb5cbf prevent set size from going below its init size
 
-    # No changes to sdk/emulator/opengl
+    $ cd sdk/emulator/opengl && git log --oneline --no-merges d430650..d50eea1 .
+        d50eea1 emulator/opengl: Remove out-of-process handling code.
+        40cc9f9 emulator/opengl: refactor Thread class.
+        242a075 emulator/opengl: refactor shared library handling.
+        312fcf9 emulator/opengl: Add global lock to libOpenglRender.
+
     # No changes to external/gtest
