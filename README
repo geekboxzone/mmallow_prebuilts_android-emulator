@@ -10,39 +10,25 @@ path of this AOSP repo workspace.
 
 Below is the list of specific commits for each input directory used:
 
-external/qemu        a78901e package-release.sh: Fix script for idea133 branch.
-sdk/emulator/opengl  d50eea1 emulator/opengl: Remove out-of-process handling code.
+external/qemu        ef4b60f Add unit tests for SocketDrainer class.
+sdk/emulator/opengl  1ee821e Support dynamic lib name without ".dylib" on Mac
 external/gtest       e8981d1 Add LOCAL_MULTILIB := both for host targets.
 
 Summary of changes:
 
-    $ cd external/qemu && git log --oneline --no-merges 6e092c5..a78901e .
-        a78901e package-release.sh: Fix script for idea133 branch.
-        63db7c2 enabled -Werror=implicit-function-declaration, fixed errors
-        6e0c73c improved debug output for adb message traffic
-        0219059 Do not force QEMU include paths for all modules.
-        9dfeac6 package-release.sh: Only list commit history for current directory.
-        e9fa4d3 Automatically upgrade cache.img to the right partition format.
-        b0ec9cc distrib/build-kernel.sh: Misc fixes.
-        b51262d Fixed bug in ffs().
-        c0e4766 shutdown socket gracefully with SocketDrainer
-        44ead41 RAMList: Upstream dirty tracking implementation.
-        206910b exec/ram_addr.h: New header to match upstream.
-        8608806 Switch hwaddr to 64-bits to match upstream.
-        6a66b61 include/hw/sd.h: Move definitions to hw/android/goldfish/mmc.c
-        aeccf4a Remove obsolete Floppy Disk, USB, BT and PCMCIA headers.
-        3dcb65d Rename QEMUConsole to QemuConsole
-        5deb7f7 Move Visitor typedef to <qemu/typedefs.h>
-        98c2314 mini-glib: Add TRUE and FALSE definitions.
-        a9be778 [MIPS64] target-mips : implement unaligned loads using TCG
-        092b978 [MIPS] Refactor page table walk
-        721271d replace refset with std::set and fix crashes
-        3eb5cbf prevent set size from going below its init size
+    $ cd external/qemu && git log --oneline --no-merges a78901e..ef4b60f .
+        ef4b60f Add unit tests for SocketDrainer class.
+        79f17a7 [MIPS32/64] Use one emulator for both MIPS32 and MIPS64
+        349ff91 [MIPS64] Change MIPS64R2-generic PRid to identify itself as 5KEf to kernel
+        3265c9e [MIPS32/64] Workaround for mips kernel load address offset
+        fe4583d [MIPS64] Fix fast TLB handler to work for MIPS64
+        3267636 [MIPS64] fix LWL/LWR instructions proper sign extension
 
-    $ cd sdk/emulator/opengl && git log --oneline --no-merges d430650..d50eea1 .
-        d50eea1 emulator/opengl: Remove out-of-process handling code.
-        40cc9f9 emulator/opengl: refactor Thread class.
-        242a075 emulator/opengl: refactor shared library handling.
-        312fcf9 emulator/opengl: Add global lock to libOpenglRender.
+    $ cd sdk/emulator/opengl && git log --oneline --no-merges d50eea1..1ee821e .
+        1ee821e Support dynamic lib name without ".dylib" on Mac
+        4bd2163 emulator: Do not build emulator-related modules with platform-build.
+        c6dd209 emulator/emugl: Fix Mac build.
+        e33909b Support GL_MAX_TEXTURE_SIZE case to glGetIntegerv API
+        145e259 Fix the Google Maps crash issue
 
     # No changes to external/gtest
