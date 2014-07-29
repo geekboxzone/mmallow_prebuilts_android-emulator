@@ -10,7 +10,25 @@ path of this AOSP repo workspace.
 
 Below is the list of specific commits for each input directory used:
 
-external/gtest       142396e Build gtest with NDK 9 for all architectures.
-external/qemu        90eb445 package-release.sh: Refine --copy-prebuilts
-sdk/emulator/opengl  88a8c6a emulator/opengl: Fix GCC 4.8 warnings.
+external/qemu        ef4b60f Add unit tests for SocketDrainer class.
+sdk/emulator/opengl  1ee821e Support dynamic lib name without ".dylib" on Mac
+external/gtest       e8981d1 Add LOCAL_MULTILIB := both for host targets.
 
+Summary of changes:
+
+    $ cd external/qemu && git log --oneline --no-merges a78901e..ef4b60f .
+        ef4b60f Add unit tests for SocketDrainer class.
+        79f17a7 [MIPS32/64] Use one emulator for both MIPS32 and MIPS64
+        349ff91 [MIPS64] Change MIPS64R2-generic PRid to identify itself as 5KEf to kernel
+        3265c9e [MIPS32/64] Workaround for mips kernel load address offset
+        fe4583d [MIPS64] Fix fast TLB handler to work for MIPS64
+        3267636 [MIPS64] fix LWL/LWR instructions proper sign extension
+
+    $ cd sdk/emulator/opengl && git log --oneline --no-merges d50eea1..1ee821e .
+        1ee821e Support dynamic lib name without ".dylib" on Mac
+        4bd2163 emulator: Do not build emulator-related modules with platform-build.
+        c6dd209 emulator/emugl: Fix Mac build.
+        e33909b Support GL_MAX_TEXTURE_SIZE case to glGetIntegerv API
+        145e259 Fix the Google Maps crash issue
+
+    # No changes to external/gtest
