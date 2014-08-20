@@ -10,25 +10,21 @@ path of this AOSP repo workspace.
 
 Below is the list of specific commits for each input directory used:
 
-external/qemu        ef4b60f Add unit tests for SocketDrainer class.
+external/qemu        6b3cbff Fixes emulator and adb server disconnect issue
 sdk/emulator/opengl  1ee821e Support dynamic lib name without ".dylib" on Mac
 external/gtest       e8981d1 Add LOCAL_MULTILIB := both for host targets.
 
 Summary of changes:
 
-    $ cd external/qemu && git log --oneline --no-merges a78901e..ef4b60f .
-        ef4b60f Add unit tests for SocketDrainer class.
-        79f17a7 [MIPS32/64] Use one emulator for both MIPS32 and MIPS64
-        349ff91 [MIPS64] Change MIPS64R2-generic PRid to identify itself as 5KEf to kernel
-        3265c9e [MIPS32/64] Workaround for mips kernel load address offset
-        fe4583d [MIPS64] Fix fast TLB handler to work for MIPS64
-        3267636 [MIPS64] fix LWL/LWR instructions proper sign extension
+    $ cd external/qemu && git log --oneline --no-merges ef4b60f..6b3cbff .
+        6b3cbff Fixes emulator and adb server disconnect issue
+        cbe657d TCG: Update to QEMU 2.0.0 version.
+        fa22f46 android-configure.sh: Use GCC 4.8 on Linux.
+        36c80b3 Force network port for adb qemu communication.
+        4050560 Disable the adb qemud pipe by default.
+        2944ca1 Properly reset the value of max_fd when it becomes invalid.
+        7b5c578 Fixed network access in windows emulator
+        9e4a448 build-kernel.sh: Make --arch=arm64 build ranchu version by default.
 
-    $ cd sdk/emulator/opengl && git log --oneline --no-merges d50eea1..1ee821e .
-        1ee821e Support dynamic lib name without ".dylib" on Mac
-        4bd2163 emulator: Do not build emulator-related modules with platform-build.
-        c6dd209 emulator/emugl: Fix Mac build.
-        e33909b Support GL_MAX_TEXTURE_SIZE case to glGetIntegerv API
-        145e259 Fix the Google Maps crash issue
-
+    # No changes to sdk/emulator/opengl
     # No changes to external/gtest
