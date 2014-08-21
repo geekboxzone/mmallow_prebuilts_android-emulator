@@ -10,26 +10,14 @@ path of this AOSP repo workspace.
 
 Below is the list of specific commits for each input directory used:
 
-external/qemu        09e4b2f arm64: Ensure a minimum of 1GB of RAM.
+external/qemu        e23bd74 arm64: Ensure that using '-memory <number>' for ARM64 AVDs work.
 sdk/emulator/opengl  1ee821e Support dynamic lib name without ".dylib" on Mac
 external/gtest       e8981d1 Add LOCAL_MULTILIB := both for host targets.
 
 Summary of changes:
 
-    $ cd external/qemu && git log --oneline --no-merges 6b3cbff..09e4b2f .
-        09e4b2f arm64: Ensure a minimum of 1GB of RAM.
-        71bab60 SocketDrainer: refactor on top of android/base/
-        e584088 android/looper.h: Implement looper_newCore() on top of QemuLooper.
-        47b0aac android/qemu/base/async/Looper.h: new helper class.
-        e3a03dd android/looper.h: Refactor with android/base/async/Looper.h
-        2d45868 android/iolooper.h: Refactor on top of SocketWaiter
-        ecdc17c android/base/async/Looper.h: new helper class
-        7f274c2 android/base/sockets/SocketWaiter.h: new helper class.
-        1ccec5b android/base/sockets/{ScopedSocket,SocketUtils}.h: new headers.
-        58d2ce0 android/base/containers/ScopedPointerSet.h: new helper class.
-        ba4d384 android/base/containers/PointerSet.h: new container class.
-        8f09289 android/base/containers/HashUtils.h: new helper class.
-        41410e9 android/base/containers/TailQueueList.h: new helper class.
+    $ cd external/qemu && git log --oneline --no-merges 09e4b2f..e23bd74 .
+        e23bd74 arm64: Ensure that using '-memory <number>' for ARM64 AVDs work.
 
     # No changes to sdk/emulator/opengl
     # No changes to external/gtest
