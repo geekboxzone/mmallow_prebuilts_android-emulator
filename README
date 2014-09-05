@@ -10,14 +10,36 @@ path of this AOSP repo workspace.
 
 Below is the list of specific commits for each input directory used:
 
-external/qemu        e23bd74 arm64: Ensure that using '-memory <number>' for ARM64 AVDs work.
-sdk/emulator/opengl  1ee821e Support dynamic lib name without ".dylib" on Mac
+external/qemu        509afff Use prebuilt toolchain for Darwin builds.
+sdk/emulator/opengl  31435b2 emulator/opengl: Cleanup build files + remove obsolete tests.
 external/gtest       e8981d1 Add LOCAL_MULTILIB := both for host targets.
 
 Summary of changes:
 
-    $ cd external/qemu && git log --oneline --no-merges 09e4b2f..e23bd74 .
-        e23bd74 arm64: Ensure that using '-memory <number>' for ARM64 AVDs work.
+    $ cd external/qemu && git log --oneline --no-merges e23bd74..509afff .
+        509afff Use prebuilt toolchain for Darwin builds.
+        4a7d6ec android/base/HashUtils.h: Remove compiler error.
+        6c28cf5 output version of gcc during emulator configure
+        9572bb3 linux: Fix timezone detection code.
+        539397e Fix issue #75221: Skip all response headers from HTTP Proxy.
+        820b4f2 Ensure 'emulator' launcher is always built on Darwin.
+        3afa556 using pc-bios files from prebuilts/qemu-kernel
+        6bd665a emulator: Refuse to run 32-bit Linux binaries by default.
+        f492dec Makefile.android: Remove 32-bit binaries on Darwin.
+        c9993fb emulator release script: incl. windows, 32bit linux binaries
+        8cc1912 Switched from prebuilt emulator binaries to built binaries
+        0802e66 remove 32bit emulator binaries from OSX SDK
+        5a646cd Increase TCG_MAX_TEMPS from 512 to 1024.
+        aed26c6 Set num_clients appropriately when loading from a snapshot
+        d155d3f Fix ScopedSocket unittest.
+        e09cde4 package-release.sh: Add --debug flag.
+        1dd4a03 SocketUtils.cpp: Fix Windows implementation.
+        0935940 android/base/Log.h: Add DPLOG() and DPLOG_IF()
+        c63d57d package-release.sh can’t copy emulator binaries from darwin
+        c0294a6 Fix package-release.sh
+        ba6c712 Fix timer bug
 
-    # No changes to sdk/emulator/opengl
+    $ cd sdk/emulator/opengl && git log --oneline --no-merges 1ee821e..31435b2 .
+        31435b2 emulator/opengl: Cleanup build files + remove obsolete tests.
+
     # No changes to external/gtest
