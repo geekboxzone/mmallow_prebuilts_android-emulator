@@ -10,127 +10,104 @@ path of this AOSP repo workspace.
 
 Below is the list of specific commits for each input directory used:
 
-external/qemu        d5c0f67 Fix bug in the original profiling support.
-sdk/emulator/opengl  f68413b Handle empty data parameter in glTexSubImage2D
-external/gtest       fde6da7 Never build gtest libs with ASAN.
+external/qemu        a5822bc Fix Windows executable icon.
+external/gtest       56cad54 Use an older standard for the NDK gtest libs.
 
 Summary of changes:
 
-    $ cd external/qemu && git log --oneline --no-merges 509afff..d5c0f67 .
-        d5c0f67 Fix bug in the original profiling support.
-        650bba3 Add -code-profile option.
-        99de4c1 Add profiling support in goldfish.
-        62a7c28 Add code profiling interface for arm.
-        bd98eae android/skin/ui.c: Add debug messages for input events.
-        5a4a159 android/skin/event.h: Add kEventTextInput event.
-        b24be05 Fix android::base::utf8Decode()
-        ffaa9aa Add UTF-8 encode/decode functions.
-        cab7810 hw-sensors: Delay initialization of the remote controller.
-        40cadd8 Misc emulator UI fixes.
-        804ba0c [arm64] Add -no-window option to emulator64-arm64.
-        382d812 android/skin/ui.h: New header.
-        eddb608 android/skin/keyboard.h: Remove obsolete function.
-        0261bb7 file rename: android/qemulator.[hc] -> android/emulator-window.[hc]
-        f826dea bulk rename: QEmulator -> EmulatorWindow
-        4adbe57 android/skin/event.h: New event abstraction.
-        e9d61f5 android/skin/keyboard.h: Abstract SDL 1.x implementation.
-        f6970c4 android/skin/winsys.h: Implement skin_winsys_set_relative_mouse_mode()
-        5e32313 android/skin/sdl_utils.c: Remove obsolete files.
-        de28871 android/main-common-ui.c: Remove SDL usage, use skin_winsys_xxx() instead.
-        d93e57d android/skin/winsys.h: Add new functions.
-        6b7b8f4 android/skin/surface-sdl.c: Renamed from android/skin/surface.c
-        5b12f1b android/skin/winsys.h: new header to abstract window manager.
-        0e6b15e android/skin/trackball.c: Use SkinSurface instead of SDL_Surface.
-        703ce76 android/skin/scaler: Use SkinSurface instead of SDL_Surface.
-        adc8dd7 android/skin/window.c: Use SkinSurface instead of SDL_Surface.
-        bc7a6e5 android/skin/surface.h: More SkinSurface methods.
-        2a00b30 android/skin/image.h: Abstract from SDL
-        609fb5b android/skin/scaler.c: Use SkinRect instead of SDL_Rect.
-        b6e0943 android/skin: Move SDL function to sdl_utils.h
-        4f11a9a android/base/async/ThreadLooper.h: new helper class
-        146038a android/base/threads/Thread.h: new helper class.
-        b404c7e android/base/threads/ThreadStore.h: new helper class.
-        653ff51 android/base/memory/LazyInstance.h: new helper class.
-        0cd4b54 android/base/synchronization/Lock.h: new helper class.
-        3a58cd9 goldfish/nand.c: Prevent random EXT4 partition corruption.
-        b15b4cc android/base/Log.h: Fix DPLOG() implementation.
-        5024ccf build: Support V=1 to show build commands.
-        8c8f3bb build-kernel.sh: Fix vmlinux-armv7 naming.
-        f10655b console: terminate connection on certain bad requests.
-        c2a4b14 Update the hw config when "-skindir" is configured
-        abdd287 Fix Windows builds. Oops #2
-        b522736 Fix linux and windows builds. Ooops.
-        77e9cde proxy/proxy_http.c: remove compiler warning.
-        0643b5c slirp-android/: remove compiler warnings.
-        6660cc5 posix-aio-compat.c: remove compiler warnings.
-        7025485 disas/i386.c: remove compiler warnings.
-        eb5c2ee util/: remove compiler warnings.
-        961f185 ui/: remove compiler warnings.
-        ab39a0e net/net-android.c: remove compiler warnings.
-        dcd7d94 android/adb-qemud.c: remove compiler warning.
-        1b2d0c7 android/camera: remove compiler warnings.
-        df1a29e qemu-log.c: Remove compiler warning.
-        5d160a3 target-arm/translate.c: Remove compiler warnings.
-        9851f6d disas/mips.c: Remove compiler warning.
-        2d6fe50 target-i384/translate.c: Remove compiler warning.
-        18b11a1 main-loop.c: Remove compiler warning.
-        073dc2d android/main.c: Remove compiler warning.
-        e8a2c51 hw/i386/pc.c: Remove compiler warning.
-        78d3155 vl-android.c: Remove compiler warning.
-        f0c5714 android/utils/timezone.c: Remove compiler warnings.
-        9187cae android/snapshot.c: Remove compiler warnings.
-        56c19d0 android/hw-qemud.c: Remove compiler warnings.
-        26150bb android/hw-pipe-net.c: Remove compiler warnings.
-        0b059be android/hw-sensors.c: Remove compiler warnings.
-        49607cb qemu-char.c: Remove compiler warnings.
-        e30759a include/qemu/bitmap.h: Remove compiler warnings.
-        0423b9d savevm.c: Remove compiler warnings.
-        fe4811e android/boot-properties.c: Remove compiler warnings.
-        b49fd30 ioport.c: Remove compiler warnings.
-        6069b33 audio: Remove compiler warnings.
-        a02d621 android/skin: Remove compiler warnings.
-        841dd3d android/base/sockets/SocketUtils.cpp: Remove unused functions.
-        5eb44b4 android/avd: Remove unused static variable.
-        8128fc0 android/wear-agent: Remove unused private member.
-        9199462 build-kernel.sh: Fix --savedefconfig for x86_64
-        67724ca android/skin/file.h: Remove SkinCharmapFuncs
-        876df1b android/skin/window.c: Remove dependencies.
-        fcc515b Emulator 32-bit check fails on Ubuntu 14.04
-        b36964b android/skin/trackball.c: Remove android/user-events.h dependency.
-        c8f21ae Move android/charmap.* to android/skin/charmap.*
-        48a1a7f Move android/keycode* to android/skin/keycode*
-        02599a9 Move skin resources do android/skin/resource.[hc]
-        5ec7bf6 android/skin: get rid of ANDROID_ROTATION_XXX
-        4d61f3f android/skin/file.c: Remove dependency on android/charmap.h
-        e41886a android/skin/file.[hc]: Remove dependency on android/framebuffer.h
-        0d82b0d android/skin/keyset.c: Remove android_keyset dependency.
-        ff5ff87 Move android/config-file.h to android/utils/aconfig-file.h
-        1ebb829 android/skin/composer.[hc]: Remove obsolete files
-        ab7fdf0 Unregister read/write events when deleting FdWatch
-        a5cc052 Warn/Panic with x86/64 emulation without KVM/HAXM
-        513b204 Connects wear with compatible phone
-        be01ba1 android/base/async/: Add AsyncReader and AsyncWriter
-        596c47b android::base::StringVector: Fix remove() implementation.
-        f99d907 android/base/sockets/SocketUtils.h: Add socketGetPort() and socketAcceptAny().
-        7d63e47 android::base::ScopedSocket: Add reset() method.
-        d357d97 android/base/String.h: Add contains() method.
-        2e525dc target-mips: fix MTHC1 and MFHC1 when FPU in FR=0 mode
-        7d039d2 fixed minor typo in OSX SDK search path
+    $ cd external/qemu && git log --oneline --no-merges d5c0f67..a5822bc .
+        a5822bc Fix Windows executable icon.
+        06635c3 [MIPS] Make sure exception is raised on TLBRET_DIRTY
+        81a8e66 android/skin/: Ensure EmuGL is properly shutdown on program exit.
+        0d51ff9 Rename new launcher to emulator-ranchu-<arch> instead of emulator-<arch>
+        e94e3f0 android/qemu-launcher: Group target information.
+        fa2f4b3 android-emugl: Add ::emugl::MessageChannel<> template.
+        a1e792b android-emugl: Add ::emugl::CondVariable.
+        187686b android-emugl: Add RenderWindow class.
+        303a377 android-emugl: Fix RenderThread termination.
+        a82f04a android-emugl: Add IOStream::forceStop() method.
+        8b50488 android-emugl: Move render_api.h to host/libs/libOpenglRender
+        746d567 android/looper-base.cpp: Remove unnecessary declarations.
+        1ad4df9 android/base/sockets/SocketErrors.h: new header.
+        382ab59 android-emugl: Fix bitness-conditional modules.
+        2ef2784 android-emugl: Rename ThreadInfo.h to RenderThreadInfo.h
+        3c2cf23 android-emugl: Move m_rcDec from RenderThread to RenderThreadInfo.
+        4c5611d android-emugl: Fix thread stack leakage in RenderThread.
+        59ba348 android-emugl: Fix emugl::Thread stack reclaim.
+        b591c38 android-emugl: Minor cleanup of EglValidate.h
+        5cca984 android-emugl: Cleanup EglConfig definition.
+        e233fd0 android-emugl: Cleanup EglGlobalInfo
+        1d9dd76 android/utils/debug.c: Initialize android_verbose.
+        4d65868 android-emugl: Cleanup EglThreadInfo.h
+        e0b100d android-emugl: Change assert() into simple warnings.
+        cc8564e android/skin/region.h: Add unit tests.
+        8ba5fa7 android/skin/rect.h: Add unit test + fix skin_rect_equals
+        f65fccd Rename skin_keycodes_buffer_xxx -> skin_keycode_buffer_xxx
+        6ce0533 android/skin/keycode-buffer.c: Add unit test.
+        1670b8c android/skin: Adding unit test suite.
+        14829cf android/skin/keyboard: Fix SDL2 keyboard handling.
+        6216538 Add GL_OES_EGL_image_external to extensions query
+        95e080d [MIPS64] Create a wrapper for running MIPS64 ranchu QEMU
+        9a225fb Cleanup Obsolete LOCAL_PRELINK_MODULE.
+        7fc4b69 android/skin: Add support for SDL2.
+        dd5fa4c Fix emulator on Mac sending message crash issue
+        53e0d7f distrib/sdl2-2.0.3: New SDL2 sources + build file.
+        e392374 android/skin/: Move window scaling to android/skin/surface.h
+        5055903 android/skin/scaler.h: Add skin_scaler_reverse_map().
+        92f9e25 android/skin/surface.h: Simplify skin_surface_create_argb32_from
+        c7b7045 android/skin/scaler.h: Add skin_scaler_free().
+        e907a63 android/skin/surface.h: Remove obsolete functions.
+        b7273d3 android/skin/window.c: Add SkinSurface for each ADisplay.
+        80bf968 android/skin/: Add skin_surface_upload()
+        4a7ca74 android/skin/: Add skin_surface_update_scaled()
+        b676607 [MIPS64] Add mips64 target support to build-kernel.sh
+        a68e95b Remove bad error message about missing icon on Windows.
+        18db6cc Use GPU emulation sources in distrib/android-emugl/
+        b0024fb Print clearer message when missing kernel file
+        fd706d9 Print more specific error message if avd not found
+        9bb1b27 distrib/android-emugl: Move Android GPU emulation sources here.
+        c99a04b Fix missing enter key
+        9c5b276 Remove unsed check for simulator
+        7370999 Fix missing backspace key
+        4aa2dc7 Fix missing backspace key
+        0b86b5f Adds ANDROID_AVD_HOME and ANDROID_EMULATOR_HOME
+        2a6e0b9 Adds ANDROID_AVD_HOME and ANDROID_EMULATOR_HOME
+        b3fa4bc Fix keyboard emulation.
+        13c2556 Implement initial screen orientation suport
+        9e80ce6 remove two obsolete functions.
+        a46fc2c android-configure.sh: Move OS X SDK detection code up.
+        c98fa77 Fix keyboard emulation.
+        b13e871 Add new -list-avds option.
+        ff2c689 Implement initial screen orientation suport
+        922418b Ensure SDL_LDLIBS is properly used when linking SDL.
+        68b8f8b remove two obsolete functions.
+        d3d143b Fix emulator freeze due to infinite loop
+        70166d6 Fix emulator freeze due to infinite loop
+        3def4f8 Sets ro.opengles.version property
+        ba14a81 android-rebuild.sh: Run emugen_unittests.
+        0a6c7e5 Make emulator binaries unstripped by default.
+        d904d4d Turn emugen unittests back on
+        81e9011 Turn emugen unittests back on
+        004a0f9 Revert the test on emugen
+        3341c55 Check OSX SDK version
+        64222eb Fix bug in profiling support:
+        d1964d7 Update icon files with new Material Design assets.
+        c130748 darwin: Remove ccache-induced clang warnings.
+        a3df28e Warn against use of old host CPU for x86/64 emulation.
+        92b6aac docs/SOURCE-CODE-ORGANIZATION.TXT
+        06e386d Fix Darwin binary.
+        08f5da3 enable SSE4.1, 4.2 and POPCNT for x86-64
+        18bb91b android/icons.h: Fix Darwin icon.
+        16c74a0 Fix Darwin dyld launch error.
+        7866fa6 package-release.sh: Force remote darwin build to use prebuilt toolchain.
+        7ae1a26 Update Linux emulator icon to 128x128 size.
+        391f8d7 distrib/update-emugl-sources.sh: New script.
+        1670f0a Run 'emugen' test suite as part of android-rebuild.sh
+        6c882a6 [MIPS64] fasttlb : Add check for high segbits
 
-    $ cd sdk/emulator/opengl && git log --oneline --no-merges 31435b2..f68413b .
-        f68413b Handle empty data parameter in glTexSubImage2D
-        ebef20f emulator/opengl/emugen: Use local variables for parameters.
-        e3823f9 emulator/opengl/emugen: Move pointer increment out of case statements.
-        9319d29 emulator/opengl/emugen: Introduce helper macros.
-        e380376 emulator/opengl/emugen: Remove accessor functions.
-        dfd4983 emulator/opengl/emugen: Ensure correct buffer alignment.
-        077e8cd emulator/opengl/emgen: Fix debug output of floating point values.
-        9f35027 emulator/opengl: Add UniqueIntegerMap class.
-        5998eb0 emulator/opengl/emugen: Use templates to read values from stream.
-        a993751 emulator/opengl/emugl: Remove ispointer field from types definitions.
-        60f24c2 emulator/opengl/emugen: Get rid of VarConverter.
-
-    $ cd external/gtest && git log --oneline --no-merges e8981d1..fde6da7 .
-        fde6da7 Never build gtest libs with ASAN.
-        f839a18 Don't manually link stlport.
+    $ cd external/gtest && git log --oneline --no-merges fde6da7..56cad54 .
+        56cad54 Use an older standard for the NDK gtest libs.
+        ce2c523 Make the libc++ libraries the primary.
+        f694f2b Remove the host libstdc++ compiled libraries.
+        3803e25 Be explicit about the STL for host modules.
 
