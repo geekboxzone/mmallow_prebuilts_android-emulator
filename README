@@ -10,63 +10,45 @@ path of this AOSP repo workspace.
 
 Below is the list of specific commits for each input directory used:
 
-external/qemu        a7da5ea package-release.sh: Move to android/scripts/
+external/qemu        872a017 Support 'mesa' GPU emulation mode automatically.
+external/qemu-android bfcdfdb hw/i386: Enable goldfish framebuffer
 external/gtest       56cad54 Use an older standard for the NDK gtest libs.
 
 Summary of changes:
 
-    $ cd external/qemu && git log --oneline --no-merges a5822bc..a7da5ea .
-        a7da5ea package-release.sh: Move to android/scripts/
-        44d7671 package-release.sh: Make reproducible tarball.
-        6f3c2b5 package-release.sh: Fix bad AOSP directory path handling.
-        6c741f8 package-release.sh: Remove --darwin-aosp-prebuilts-dir option.
-        ce7ed32 package-release.sh: Fix --copy-prebuilts doc.
-        a48ff86 android-configure.sh: Rename --prebuilts-dir to --aosp-prebuilts-dir
-        1ddabaf Cherry pick aosp/master patch into aosp/studio-1.2-dev
-        97c3f2b build-qemu-android.sh: Add --src-dir=<dir> option.
-        f5a6b07 Rename a few prebuilts build scripts.
-        deff600 Backport arm_boot: Change initrd load address to "halfway through RAM"
-        6891dcb rebuild-qemu-android.sh: Add libfdt to dependencies.
-        3e31707 download-dependencies-sources.sh: Add support for cloning GIT repositories
-        aec7690 android-rebuild.sh: Fix qemu-android probing.
-        6cc8200 Destroy all contexts when render thread exits
-        f8aae3f android/scripts/build-mesa.sh: New script to rebuild Mesa3D library.
-        982fd9c package_builder.shi: Support binprefix-less toolchain.
-        00b4c8a android/opengles.c: Dump OpenGLES vendor/renderer information.
-        67b52fb gen-android-sdk-toolchain.sh: Fix pkg-config creation bug.
-        664197c rebuild-qemu-android-prebuilts.sh: Use package_builder.shi
-        041bda1 android/scripts/rebuild-qemu-android.sh: Misc fixes.
-        c09966a android/scripts/: Simplify --darwin-ssh handling.
-        481e9e7 rebuild-qemu-android-prebuilts.sh: Fix --help typos.
-        61447fd android/scripts/: Add --install-dir=<dir> option.
-        4812e62 android/scripts/: Add --verbosity=<level> option.
-        e36c098 host side gles fix: Enalbe screen capture with gpu on
-        37fcb6a android/skin/surface-sdl.c: Fix SDL 1.x build.
-        53cabce package_list_parser.shi: Fix patching of uncompressed sources.
-        4b0dd1f Fix Darwin SHA-1 computation.
-        5ba7b55 android-rebuild.sh: Copy qemu-android prebuilts unde objs/qemu/
-        890b7bb Add GL_OES_rgb8_rgba8 extension if available
-        9b0fd47 android/scripts/rebuild-qemu-android.sh: new script.
-        c655bce android/scripts/utils/package_builder.shi: New helper script.
-        cd6ad70 android/scripts/: Add scripts to download and rebuild dependencies.
-        82aa88b Guard against NULL parameters in glGetActiveAttrib and glGetActiveUniform
-        5561fad gles: Enable not_power_of_two extension support
-        9f5e063 Use SDL 2.x by default as the UI backend.
-        9c49007 android-emugl: Move RenderWindow to its own thread.
-        9982804 emugl: Remove silly windows compiler warning.
-        569bd35 Remove misc int-to-pointer warnings.
-        ebf34c1 Remove annoying compiler warnings related to Winsock.
-        dd424ed target-mips/translate.c: Fix silly compiler warning.
-        2a48345 Makefile.android: Fix typo dealing with Win32 executable icon generation.
-        6e04c31 android/skin/: Add skin_surface_upload()
-        21487c8 android/skin/: Add skin_surface_update_scaled()
-        145d3b9 android-configure.sh: Move OS X SDK detection code up.
-        fef974c Make emulator binaries unstripped by default.
-        0873756 Check OSX SDK version
-        404f6fd android-emugl: Fix emugl::Thread stack reclaim.
-        c30050b android-emugl: Fix thread stack leakage in RenderThread.
-        83f3a88 Use GPU emulation sources in distrib/android-emugl/
-        b740962 distrib/android-emugl: Move Android GPU emulation sources here.
-        bed2396 Fix issue #91326
+    $ cd external/qemu && git log --oneline --no-merges a7da5ea..872a017 .
+        872a017 Support 'mesa' GPU emulation mode automatically.
+        e6b21c8 android::base::System: Add envGet() and envSet() methods.
+        b012549 Fix pulseaudio backend.
+        b0b87fb android/opengl/emugl_config.cpp: Fix environment variables.
+        8709697 docs/DEVELOPMENT.TXT: Update developer documentation.
+        20570e3 download-sources.sh: Fix Darwin run.
+        eecaf43 build-mesa.sh: Download source tarballs on demand.
+        dd877c6 package_builder.shi: Add linux-x86 and windows-x86 to default hosts.
+        ee5f193 Improve GPU emulation messages.
+        cf0c852 build-qemu-android.sh: Add mips64 to the list of default targets.
+        085da9e android-rebuild.sh: Copy Mesa GPU libraries to objs/<lib>/gles_mesa.
+        03705bd Implement new '-gpu <mode>' option.
+        6937075 Add hw.gpu.mode hardware property.
+        bb12708 android/opengl/emugl_config.h: New header.
+        3bf0685 android::opengl::EmuglBackendList: new helper class.
+        4cf0396 android/opengl/EmuglBackendScanner.h: new helper class.
+        f387532 android/base/system/System.h: new helper header.
+        f8874db TestTempDir: Win32 fixes
+        85eca1b android/scripts/build-*.sh: Only build if necessary + better remote darwin builds.
+        8a42742 android-rebuild.sh: Add --build-qemu-android option.
+        accefbd package_builder.shi: Introduce remote darwin build helpers.
+        97fbb06 gen-android-sdk-toolchain.sh: Use prebuilt Clang 3.5 on Darwin.
+        bf19d90 package-release.sh: Add qemu-android sources and binaries.
+        b30119c Move 64-bit libraries to $EXEC_DIR/lib64
+        9676216 android/utils/dirscanner.c: Fix Win32 DirScanner implementation.
+        6b63253 android/base/misc/StringUtils.h: new helper routines.
+        a12daa9 android/base/memory/QSort.h: new helper template.
+        6e2524f common.shi: Fix spaces_to_commas implementation.
+        7360c68 android-rebuild.sh: Fix --verbosity=<num> support.
+        a5482bc distrib/build-kernel.sh: Remove obsolete script.
+        2cfd551 Destroy window surfaces when render thread exits
+
+    $ cd external/qemu-android && git log --oneline --no-merges ..bfcdfdb .
 
     # No changes to external/gtest
