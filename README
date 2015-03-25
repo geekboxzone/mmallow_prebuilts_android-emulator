@@ -10,45 +10,71 @@ path of this AOSP repo workspace.
 
 Below is the list of specific commits for each input directory used:
 
-external/qemu        872a017 Support 'mesa' GPU emulation mode automatically.
-external/qemu-android bfcdfdb hw/i386: Enable goldfish framebuffer
+external/qemu        7180616 Set androidboot.hardware to goldfish for all non DT platforms
+external/qemu-android 055e954 hw/i386: Enable goldfish framebuffer
 external/gtest       56cad54 Use an older standard for the NDK gtest libs.
 
 Summary of changes:
 
-    $ cd external/qemu && git log --oneline --no-merges a7da5ea..872a017 .
-        872a017 Support 'mesa' GPU emulation mode automatically.
-        e6b21c8 android::base::System: Add envGet() and envSet() methods.
-        b012549 Fix pulseaudio backend.
-        b0b87fb android/opengl/emugl_config.cpp: Fix environment variables.
-        8709697 docs/DEVELOPMENT.TXT: Update developer documentation.
-        20570e3 download-sources.sh: Fix Darwin run.
-        eecaf43 build-mesa.sh: Download source tarballs on demand.
-        dd877c6 package_builder.shi: Add linux-x86 and windows-x86 to default hosts.
-        ee5f193 Improve GPU emulation messages.
-        cf0c852 build-qemu-android.sh: Add mips64 to the list of default targets.
-        085da9e android-rebuild.sh: Copy Mesa GPU libraries to objs/<lib>/gles_mesa.
-        03705bd Implement new '-gpu <mode>' option.
-        6937075 Add hw.gpu.mode hardware property.
-        bb12708 android/opengl/emugl_config.h: New header.
-        3bf0685 android::opengl::EmuglBackendList: new helper class.
-        4cf0396 android/opengl/EmuglBackendScanner.h: new helper class.
-        f387532 android/base/system/System.h: new helper header.
-        f8874db TestTempDir: Win32 fixes
-        85eca1b android/scripts/build-*.sh: Only build if necessary + better remote darwin builds.
-        8a42742 android-rebuild.sh: Add --build-qemu-android option.
-        accefbd package_builder.shi: Introduce remote darwin build helpers.
-        97fbb06 gen-android-sdk-toolchain.sh: Use prebuilt Clang 3.5 on Darwin.
-        bf19d90 package-release.sh: Add qemu-android sources and binaries.
-        b30119c Move 64-bit libraries to $EXEC_DIR/lib64
-        9676216 android/utils/dirscanner.c: Fix Win32 DirScanner implementation.
-        6b63253 android/base/misc/StringUtils.h: new helper routines.
-        a12daa9 android/base/memory/QSort.h: new helper template.
-        6e2524f common.shi: Fix spaces_to_commas implementation.
-        7360c68 android-rebuild.sh: Fix --verbosity=<num> support.
-        a5482bc distrib/build-kernel.sh: Remove obsolete script.
-        2cfd551 Destroy window surfaces when render thread exits
+    $ cd external/qemu && git log --oneline --no-merges 872a017..7180616 .
+        7180616 Set androidboot.hardware to goldfish for all non DT platforms
+        e8ddc8d Initialization routines to support alternative GLES implementations.
+        5c9cd82 Changing the core of the GLES dispatcher into a struct.
+        bdb357d Removing obsolete GLDispatch.* files from GLES_CM
+        d6c498d build-mesa.sh: Also build OSMesa library.
+        85ca2a3 emugl: Switch {create,destroy}OpenGLSubwindow() to return bool.
+        85677dc emugl: EglOsApi.h: Remove EglConfig.h dependency.
+        00146ec emugl: EglOSApi.h: Introduce EglOS::Engine interface.
+        660815c emugl: Remove EGLNativePixelFormat.
+        0e54a28 emugl: Get rid of EGLNativeContextType
+        49e304b emugl: Remove EGLNativePbufferType
+        f1397e1 emugl: Get rid of EGLNativeSurfaceType.
+        eef66f3 emugl: Remove EGLNativeInternalDisplayType.
+        97c8fe0 emugl: EglOsApi.h: Get rid of EGLNativeInternalDisplayType wrappers.
+        5af19ea emugl: EglOsApi_darwin.cpp: Implement EglOS::Display sub-class.
+        9ef7bc5 emugl: EglOsApi_wgl.cpp: Implement EglOS::Display instance.
+        6fbff29 emugl: EglOsApi.h: Implement GLX-based Display class.
+        5177ae7 emugl: EglOsApi.h: Add Display interface class.
+        d8d855f emugl: EglOsApi_xxx.cpp: Minor cleanup and reformatting.
+        5aa342e emugl: eglinternalplatform.h: Move and rename to EglInternal.h
+        9c9ba9d emugl: EglDisplay: remove m_isDefault member.
+        0567e28 emugl: EglOsApi.h: Rename implementation sources.
+        6168695 emugl: EglOsApi.h: Remove EglSurface.h include.
+        8cc55f5 emugl: EglOsApi.h: Remove EglPbufferSurface.h include.
+        b4138d6 emugl: EglOsApi.h: Remove EglDisplay.h include.
+        e1fd882 changed IFS so line parsing also works in 'sh'
+        5d56c6a do not exit script when exit status of "which" is not zero
+        57f6e9a Revert "Fix Darwin builds."
+        7a35165 Fix Darwin builds.
+        2afc613 Add Windows icons to ranchu launcher programs.
+        0e07663 package-release.sh: Add missing PC Bios files.
+        97c3f69 emugl: Refactor RenderContext class.
+        10588f5 emugl: Refactor ColorBuffer class.
+        0f328c5 emugl: Refactor WindowSurface class.
+        3bef521 emugl: Refactor FbConfig class.
+        f1da503 docs/DEVELOPMENT.TXT: Update active branch to studio-1.3-dev
+        e74b883 Switch libOpenglRender to GLES 2.x
+        4cdc8f9 emugl: Make GLES 2.x mandatory.
+        fa25efc emugl: Get rid of obsolete WITH_GLESV2 macro.
+        b6bc76d Avoid flooding emulator output with unhelpful messages
+        c24cb7c Blocking SIGALRM while using connect syscall to connect emulator to adb
+        53f1955 emugl: Rename NativeSubWindow sources.
+        87a4ca0 emugl: NativeSubWindow.h: Remove redundant display parameter.
+        627d8cd emugl: Simplify GLESv1 dispatch sources.
+        11c6554 emugl: Rename GLESv2 dispatch global variables and functions.
+        93ee47e emugl: Rename GLESv1 dispatch global variables and functions.
+        ca7964e emugl: Rename GLES 2.x decoder sources.
+        83e8595 emugl: Rename GLES 1.x Decoder sources.
+        c9733eb emugl: Rename GLES dispatch headers and sources.
+        4616e99 package-release.sh: Fix invalid shell invokation.
+        12bbb31 android-configure.sh: Fix OS X SDK detection
+        86ef9be Copy lib64 to tools/lib64 during release
+        4463b53 Fix emulator crash with "-gpu on"
+        39c16e2 Allow framebuffer heights that are not multiples of 4.
+        c7e7d8a Disable waiting for RenderThread termination on windows
 
-    $ cd external/qemu-android && git log --oneline --no-merges ..bfcdfdb .
+    $ cd external/qemu-android && git log --oneline --no-merges bfcdfdb..055e954 .
+        055e954 hw/i386: Enable goldfish framebuffer
+        a041520 hw/i386: enabled android pipe
 
     # No changes to external/gtest
