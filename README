@@ -10,71 +10,12 @@ path of this AOSP repo workspace.
 
 Below is the list of specific commits for each input directory used:
 
-external/qemu        7180616 Set androidboot.hardware to goldfish for all non DT platforms
-external/qemu-android 055e954 hw/i386: Enable goldfish framebuffer
+external/qemu        8ada71a emugl: Document FrameBuffer class.
+external/qemu-android 8ad041c hw/arm/ranch.c: Add firmware node to DT
 external/gtest       56cad54 Use an older standard for the NDK gtest libs.
 
 Summary of changes:
 
-    $ cd external/qemu && git log --oneline --no-merges 872a017..7180616 .
-        7180616 Set androidboot.hardware to goldfish for all non DT platforms
-        e8ddc8d Initialization routines to support alternative GLES implementations.
-        5c9cd82 Changing the core of the GLES dispatcher into a struct.
-        bdb357d Removing obsolete GLDispatch.* files from GLES_CM
-        d6c498d build-mesa.sh: Also build OSMesa library.
-        85ca2a3 emugl: Switch {create,destroy}OpenGLSubwindow() to return bool.
-        85677dc emugl: EglOsApi.h: Remove EglConfig.h dependency.
-        00146ec emugl: EglOSApi.h: Introduce EglOS::Engine interface.
-        660815c emugl: Remove EGLNativePixelFormat.
-        0e54a28 emugl: Get rid of EGLNativeContextType
-        49e304b emugl: Remove EGLNativePbufferType
-        f1397e1 emugl: Get rid of EGLNativeSurfaceType.
-        eef66f3 emugl: Remove EGLNativeInternalDisplayType.
-        97c8fe0 emugl: EglOsApi.h: Get rid of EGLNativeInternalDisplayType wrappers.
-        5af19ea emugl: EglOsApi_darwin.cpp: Implement EglOS::Display sub-class.
-        9ef7bc5 emugl: EglOsApi_wgl.cpp: Implement EglOS::Display instance.
-        6fbff29 emugl: EglOsApi.h: Implement GLX-based Display class.
-        5177ae7 emugl: EglOsApi.h: Add Display interface class.
-        d8d855f emugl: EglOsApi_xxx.cpp: Minor cleanup and reformatting.
-        5aa342e emugl: eglinternalplatform.h: Move and rename to EglInternal.h
-        9c9ba9d emugl: EglDisplay: remove m_isDefault member.
-        0567e28 emugl: EglOsApi.h: Rename implementation sources.
-        6168695 emugl: EglOsApi.h: Remove EglSurface.h include.
-        8cc55f5 emugl: EglOsApi.h: Remove EglPbufferSurface.h include.
-        b4138d6 emugl: EglOsApi.h: Remove EglDisplay.h include.
-        e1fd882 changed IFS so line parsing also works in 'sh'
-        5d56c6a do not exit script when exit status of "which" is not zero
-        57f6e9a Revert "Fix Darwin builds."
-        7a35165 Fix Darwin builds.
-        2afc613 Add Windows icons to ranchu launcher programs.
-        0e07663 package-release.sh: Add missing PC Bios files.
-        97c3f69 emugl: Refactor RenderContext class.
-        10588f5 emugl: Refactor ColorBuffer class.
-        0f328c5 emugl: Refactor WindowSurface class.
-        3bef521 emugl: Refactor FbConfig class.
-        f1da503 docs/DEVELOPMENT.TXT: Update active branch to studio-1.3-dev
-        e74b883 Switch libOpenglRender to GLES 2.x
-        4cdc8f9 emugl: Make GLES 2.x mandatory.
-        fa25efc emugl: Get rid of obsolete WITH_GLESV2 macro.
-        b6bc76d Avoid flooding emulator output with unhelpful messages
-        c24cb7c Blocking SIGALRM while using connect syscall to connect emulator to adb
-        53f1955 emugl: Rename NativeSubWindow sources.
-        87a4ca0 emugl: NativeSubWindow.h: Remove redundant display parameter.
-        627d8cd emugl: Simplify GLESv1 dispatch sources.
-        11c6554 emugl: Rename GLESv2 dispatch global variables and functions.
-        93ee47e emugl: Rename GLESv1 dispatch global variables and functions.
-        ca7964e emugl: Rename GLES 2.x decoder sources.
-        83e8595 emugl: Rename GLES 1.x Decoder sources.
-        c9733eb emugl: Rename GLES dispatch headers and sources.
-        4616e99 package-release.sh: Fix invalid shell invokation.
-        12bbb31 android-configure.sh: Fix OS X SDK detection
-        86ef9be Copy lib64 to tools/lib64 during release
-        4463b53 Fix emulator crash with "-gpu on"
-        39c16e2 Allow framebuffer heights that are not multiples of 4.
-        c7e7d8a Disable waiting for RenderThread termination on windows
-
-    $ cd external/qemu-android && git log --oneline --no-merges bfcdfdb..055e954 .
-        055e954 hw/i386: Enable goldfish framebuffer
-        a041520 hw/i386: enabled android pipe
-
+    # No changes to external/qemu
+    # No changes to external/qemu-android
     # No changes to external/gtest
